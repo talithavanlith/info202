@@ -1,0 +1,334 @@
+/* A style sheet for "A Guide to High Quality Web Development" website */
+/* Created by Talitha van Lith, Apr 2017 */
+/* margin/padding: top right bottom left;*/
+
+
+html{
+    background-color: #f9f7ef;
+    color: #4f4f4f;
+    padding: 0px;
+    margin: 0;
+}
+
+/* Specifications of website background*/
+body{
+    background-color: inherit;
+    color: inherit;
+    font-family: Chalkboard, ariel, sans-serif;
+    text-align:center;
+    min-height: 400px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+section{
+    padding: 60px 60px 30px 60px;
+}
+
+/* Page header specifications */
+header{
+    background-color: #a8cbe5;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0px;
+    margin: 0px;
+    padding: 0px 0 0 0;
+    color: inherit;
+}
+
+h1{
+    color: #f8f8f8;
+    background-color: inherit;
+    font-family: Chalkboard, ariel, sans-serif;
+    font-size: 65px;
+    float: left;
+    margin: 0px;
+    padding: 20px 0px 0 0px;
+}
+
+#header1{
+    padding: 20px 0px 0px 33%;
+}
+.header_image{
+    color: inherit;
+    background-color: inherit;
+    float: left;
+    padding: 13px 35px 0 20px;
+    margin: 0px;
+}
+/* Page header finishes */
+
+/* navigation */
+#menu {
+    margin: 0;
+    padding-top: 35px;
+    background-color: inherit;
+    color: #f8f8f8;
+    width: 100%;
+    height: 0px;
+}
+
+.nav {
+    font-family: Chalkboard, ariel, sans-serif;
+    color: #4f4f4f;
+    background-color: #97c5ed;
+    border: 3px solid #4f4f4f;
+    padding: 15px 20px;
+    font-size: 20px;
+    margin: 15px 5px 5px 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    clear: left;
+}
+
+#welcome{
+    font-family: Chalkboard, ariel, sans-serif;
+    color: #4F4F4F;
+    background-color: inherit;
+    padding: 30px 20px;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    
+    clear: left;
+}
+#checkOutButton{
+  width: 25%;
+}
+
+#buyButton{
+  margin: 1px;
+  padding: 10px 13px;
+  background-color: #c3dff7; 
+}
+
+.categories{
+  font-family: Chalkboard, ariel, sans-serif;
+  color: #97c5ed;
+  background-color: #4f4f4f;
+  border: 3px solid #4f4f4f;
+  padding: 15px 20px;
+  margin: 15px 5px 5px 5px;
+  font-size: 20px;
+  width: 15%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Change the link color to light green on hover */
+.categories:hover {
+    background-color: #97c5ed;
+    color: #4f4f4f;
+    text-decoration: none;
+}
+/* Change the link color to light green on hover */
+.nav:hover {
+    background-color: #4f4f4f;
+    color: #97c5ed;
+    text-decoration: none;
+}
+/* Change the link color to light green on hover */
+#buyButton:hover {
+    font-size: 23px;
+    font-weight: bold;
+    color: #4F4F4F;
+}
+
+#space{
+    font-size: 20px;
+    color: inherit;
+    background-color: inherit;
+    padding: 0;
+    margin: 0 0px 0 10%;
+    float: left;
+}
+
+/* navigation finish */
+h2{
+    color: inherit;
+    background-color: #97c5ed;
+    font-family: Chalkboard, Arial, sans-serif;
+    border-bottom: 5px solid #4f4f4f;
+    border-top: 5px solid #4f4f4f;
+    margin: 100px 0 0 0;
+    padding: 20px ;
+    font-size: 60px;
+    font-weight: bold;
+    clear: right;
+}
+
+
+/* Image and text layout on "about.html" page */
+
+.float_left{
+    float: left;
+    margin: 0px;
+    padding: 0 0 60px 0px;
+}
+
+img{
+    width: 400px;
+    padding: 100px 0 0 50px;
+}
+
+/* Image and text layout on "about.html" page finish*/
+
+p{
+    padding: 70px 0 70px 0;
+    margin: 0;
+    font-size: 30px;
+    color: inherit;
+    background-color: inherit;
+}
+
+/* Table layout on "rankings.html" page */
+table{
+    border-collapse: collapse;
+    margin: 30px 0 30px 0;
+}
+
+table, th, td {
+    padding: 0 0 0 20px;
+    font-size: 20px;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(225, 225, 225);
+    color: inherit;
+}
+
+th{
+    height: 50px;
+    width: 30%;
+    text-align: left;
+    padding: 0 0 0px 2%;
+    margin: 0;
+}
+
+td{
+  text-align: left;
+}
+
+.less-margin{
+    padding:0;
+    margin: 180px 0 0 0px;
+}
+
+.tableSpacing{
+  width: 80%;
+  margin: 5% 10% 5% 10%;
+}
+
+#name{
+  width: 25%;
+}
+
+#description{
+  width: 45%;
+}
+
+#price{
+  width: 10%;
+}
+
+#available{
+  width: 5%;
+}
+
+#buy{
+  width: 15%;
+}
+/* Table layout on "rankings.html" page finish*/
+
+/* Form layout on "contactus.html" page */
+fieldset{
+    border: 5px solid #4F4F4F;
+    margin: 0 0 0 20%;
+    padding: 20px;
+    width: 60%;
+    font-size: 30px;
+}
+
+legend{
+    background-color: inherit;
+    color: inherit;
+    padding: 4px;
+    margin: 0px;
+    font-weight: bold;
+}
+input[type]{
+    outline: none;
+}
+input[type]:focus {
+    border: 2px solid #4f4f4f;
+}
+
+label {
+    padding: 10px;
+    display: inline-block;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 35%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 60%;
+    margin-top: 6px;
+}
+
+.col-50 {
+    float: left;
+    width: 60%;
+    margin-top: 6px;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.formSpacing{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* Form layout on "contactus.html" page finish*/
+
+footer{
+    width: 100%;
+    height: 30px;
+    padding: 3px 0 0px 0;
+    margin: 0px;
+    text-align: center;
+    color: #f8f8f8;
+    background-color: #278bdd;
+    clear: left;
+}
+
+.last_p{
+    clear:left;
+}
+
+footer p{
+    clear: left;
+    padding: 5px 0px 0px 0px;
+    margin: 0px;
+    font-size: 17px;
+}

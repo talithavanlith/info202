@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Shopping Cart</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+    <body ng-controller="ShoppingController as shopCtrl">
+        <div ng-include="'menu.html'" ></div>
+        <h2>Shopping Cart</h2>
+        <table class="tableSpacing" ng-controller="ShoppingController as shopCtrl">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr ng-repeat="item in shopCtrl.items">
+                <td>{{item.product.name}}</td>
+                <td>${{item.salePrice}}</td>
+                <td>{{item.quantityPurchased}}</td>
+                <td>${{item.getItemTotal()}}</td>
+            </tr>
+            <tr>
+                <th>Total Cost</th>
+                <th></th>
+                <th></th>
+                <th>${{shopCtrl.total}}</th>
+            </tr>
+        </table>
+        <input class="nav" id="checkOutButton" type="submit" value="Check Out Cart" ng-click="shopCtrl.checkOut()">
+    </body>
+</html>

@@ -1,0 +1,67 @@
+@startuml
+
+' style tweaks to make the diagram a little more readable
+skinparam {
+	Style strictuml
+	RoundCorner 8
+
+	Sequence {
+		' make activations yellow too
+		LifeLineBackgroundColor #FDFDCD
+
+		' make stereotypes less ugly
+		Stereotype {
+			Font {
+				Size 11
+				Style plain
+			}
+		}
+	}
+
+	DatabaseBorderColor #A80036
+
+}
+
+title View Products (using Website)
+
+actor Customer as Customer
+participant "Server" as server << main >>
+participant "Product\nWebpage" as webpage << webpage >>
+participant "productController" as controller << controller >>
+participant "ProductModule" as module << module >>
+participant "ProductDatabaseDAO" as dao << ProductDAO >>
+database "Database" as db
+
+server++
+create module
+server -> module : « construct »
+
+create webpage
+server -> webpage : « construct »
+
+
+Customer ->> webpage : opens "viewProducts.html"
+webpage++
+
+create controller
+webpage -> controller++ : « construct »
+webpage -> controller : prodCtrl.products
+
+controller -> module++ : productDAO.query()
+
+create dao
+module -> dao : « construct »
+module -> dao++ : getProducts()
+
+dao -> db++ : select * from product
+return ResultSet
+
+return products
+return products
+return products
+
+webpage -> webpage : display product\ndetails in a table
+
+note left : products now\nvisible to Customer
+
+@enduml

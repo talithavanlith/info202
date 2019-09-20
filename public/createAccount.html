@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+    <body>
+        <div ng-include="'menu.html'" ></div>
+        <h2>Create an Account</h2>
+        <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.registerCustomer(customer)">
+            <fieldset>
+                <legend> Account Details </legend><div class="row">
+        <div class="col-25">
+          <label for="username">User Name:</label>
+        </div>
+        <div class="col-50">
+          <input type="text" name="username" id="username"  ng-model="customer.username" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="firstname">First Name:</label>
+        </div>
+        <div class="col-50">
+          <input type="text" name="firstname" id="firstname" ng-model="customer.firstname" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="surname">Last Name:</label>
+        </div>
+        <div class="col-50">
+          <input type="text" name="surname" id="surname" ng-model="customer.surname" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">Email:</label>
+        </div>
+        <div class="col-50">
+          <input type="email" name="email" id="email" ng-model="customer.email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="address">Address:</label>
+        </div>
+        <div class="col-50">
+          <input type="text" name="address" id="address" ng-model="customer.shippingAddress" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="credit">Credit Card:</label>
+        </div>
+        <div class="col-50">
+          <input type="text" name="credit" id="credit" ng-model="customer.creditCardDetails" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="password">Password:</label>
+        </div>
+        <div class="col-50">
+          <input type="password" name="password" id="password" ng-model="customer.password" required>
+        </div>
+      </div>
+                <button class="nav" type="submit">Create Account</button>
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+@startuml
+
+' style tweaks to make the diagram a little more readable
+skinparam {
+	Style strictuml
+	RoundCorner 8
+
+	Sequence {
+		' make activations yellow too
+		LifeLineBackgroundColor #FDFDCD
+
+		' make stereotypes less ugly
+		Stereotype {
+			Font {
+				Size 11
+				Style plain
+			}
+		}
+	}
+
+	DatabaseBorderColor #A80036
+
+}
+
+title Search for Product by ProductID
+
+actor User as user
+participant "Administration" as main << main >>
+participant "MainMenu" as menu << frame >>
+participant "ProductReportDialog" as dialog << dialog >>
+participant "ProductDatabaseDAO" as dao << ProductDAO >>
+participant "SimpleListModel\n:model" as model
+database "Database" as db
+
+main++
+create menu
+main -> menu : « construct »
+
+
+user ->> menu : clicks 'View Products'
+menu++
+
+
+create dialog
+menu -> dialog++ : « construct »
+
+
+create dao
+dialog -> dao : « construct »
+
+'call getCategories as well?
+dialog -> dao++ : getProducts()
+dao -> db++ : select * from product
+return ResultSet
+dao -> dao : reconstruct products\nfrom ResultSet
+return products
+
+create model
+dialog -> model : « construct »
+dialog -> model++ : updateItems(products)
+model--
+dialog -> dialog : comboProductList.setModel(model)
+
+note left : products now\nvisible to user
+
+user ->> dialog :Enters ProductID number into search box
+user ->> dialog :clicks 'Search' button
+
+dialog -> dialog : txtSearch.getValue()
+'if box for if value isn't valid?
+'if product searched for doesn't exist of nothing is searched for?
+
+dialog -> dao++ :[productID > 0 && productID.length() <9]\nsearch(productID)
+dao -> db++ :select * from product where product_id = product_id
+return ResultSet
+dao -> dao : reconstruct product\nfrom ResultSet
+return product
+db--
+dao--
+
+dialog -> model++ :updateItems(product)
+model--
+dialog -> dialog :comboProductList.setModel(model)
+note left : only searched product\ndisplayed in combo box (if no\nproduct was found box is empty)
+
+
+@enduml

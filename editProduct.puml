@@ -1,0 +1,122 @@
+@startuml
+
+' style tweaks to make the diagram a little more readable
+skinparam {
+	Style strictuml
+	RoundCorner 8
+
+	Sequence {
+		' make activations yellow too
+		LifeLineBackgroundColor #FDFDCD
+
+		' make stereotypes less ugly
+		Stereotype {
+			Font {
+				Size 11
+				Style plain
+			}
+		}
+	}
+
+	DatabaseBorderColor #A80036
+
+}
+
+title Edit Product
+
+actor User as user
+participant "Main" as main << main >>
+participant "MainMenu" as menu << frame >>
+participant "ProductReportDialog" as report << dialog >>
+participant "ProductDatabase" as dao << DAO >>
+participant "ProductEditor" as editor << dialog >>
+participant "ValidationHelper" as validator
+participant "SimpleListModel\n:model" as model
+participant "Product\n:product" as product << domain >>
+database "Database" as db
+
+create menu
+main -> menu : « create »
+
+user -> menu : clicks 'View Products'
+activate menu
+
+
+create report
+menu -> report++ : « construct »
+
+
+create dao
+report -> dao : « construct »
+
+
+note over report: as shown in\n'View Products'\ndiagram
+user <-- report : list of products displayed
+
+deactivate report
+
+user -> report++ : selects a product in the list
+report--
+
+user -> report : clicks 'Edit' button
+activate report
+
+report -> report : jList.getSelectedValue() : product
+
+create editor
+report -> editor++ : « create(product) »
+
+'process to put categories in combo box
+editor -> dao++ : getCategories()
+dao -> db++ : select distinct category from product
+return ResultSet
+dao -> dao : extract categories\nfrom ResultSet
+return categories
+
+create model
+editor -> model : « construct »
+
+editor -> model++ : updateItems(categories)
+model--
+editor -> editor : cmbCategory.setModel(model)
+note left : categories now\nin combobox
+
+
+create validator
+editor -> validator : « create »
+editor -> validator++ :addTypeFormatter() for\nProductID, Price & Quantity
+validator--
+
+create product
+editor -> product : « construct »
+editor -> product++ :set the new product object to productToEdit 
+product--
+
+editor -> editor :set product details to\nthe gui component values
+editor -> editor :txtID.setEditable(false)
+
+user <-- editor : product details displayed, ready for editing
+deactivate editor
+
+user -> editor++ : edits product details
+editor--
+
+user -> editor : clicks 'Save' button
+editor++
+editor -> validator++ : isValid(product)
+return valid
+opt if valid
+note over editor: existing save code as\nshown in 'Add Product'\ndiagram
+end
+editor --> report
+editor--
+destroy editor
+
+report -> dao++ : getProducts()
+return products
+
+report -> report : productsModel.updateItems(products)
+
+note left: updated product\ndisplayed in report
+
+@enduml
